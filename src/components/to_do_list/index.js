@@ -24,8 +24,12 @@ class ToDoList extends Component {
         this.deleteItem = this.deleteItem.bind(this);
     }
 
-    componentWillMount() {
-        this.getListData();
+    async componentWillMount() {
+        // this.getListData();
+
+        const response = await axios.get('http://localhost:8000/api/index.php');
+
+        console.log('Resp from server: ', response);
     }
 
     async getListData() {
