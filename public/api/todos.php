@@ -21,7 +21,8 @@ switch($method){
         $output['message'] = 'PUT request made';
         break;
     case 'PATCH':
-        $output['message'] = 'PATCH request made';
+        $_PATCH = json_decode(file_get_contents('php://input'), true);
+        require_once('patch/'.$action.'.php');
         break;
     case 'DELETE':
         $output['message'] = 'DELETE request made';

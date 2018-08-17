@@ -131,6 +131,11 @@ class ToDoList extends Component {
         };
 
         // Use patch request to update item based on id
+        const response = await axios.patch('api/todos.php', dataToSend, {
+            params: {
+                action: 'toggle_complete'
+            }
+        });
 
         this.getListData();
     }
@@ -153,7 +158,7 @@ class ToDoList extends Component {
 
         return (
             <div className="to-do-list">
-                <h1 className="center cyan-text text-accent-4">To Do List</h1>
+                <h1 className="center cyan-text text-accent-4">My Awesome To Do List</h1>
                 <form onSubmit={this.addItem} className="row">
                     <Input name="title" label="Title" value={title} onChange={this.handleInputChange} submitted={submitted} focus />
                     <Input name="details" label="Details" value={details} onChange={this.handleInputChange} submitted={submitted} />
